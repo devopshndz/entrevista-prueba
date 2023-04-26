@@ -42,31 +42,31 @@ jobs:
         #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_TOKEN: "c84f12a9a1db470b759cf1107822db8860cf8ea1"
 
-## Build and push docker image
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+# ## Build and push docker image
+#     - name: Login to Docker Hub
+#       uses: docker/login-action@v1
+#       with:
+#         username: ${{ secrets.USERNAME }}
+#         password: ${{ secrets.PASSWORD }}
     
-    - name: Build and push Docker image
-      if: success()
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: devco/fast-api-example:latest
+#     - name: Build and push Docker image
+#       if: success()
+#       uses: docker/build-push-action@v2
+#       with:
+#         context: .
+#         push: true
+#         tags: devco/fast-api-example:latest
 
-## Deploy to docker
-    - name: Deploy to Docker
-      if: success()
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        script: |
-          docker pull devco/fast-api-example:latest
-          docker stop fast-api-example || true
-          docker rm fast-api-example || true
-          docker run --name fast-api-example -d -p 8000:8000 devco/fast-api-example:latest
+# ## Deploy to docker
+#     - name: Deploy to Docker
+#       if: success()
+#       uses: appleboy/ssh-action@master
+#       with:
+#         host: ${{ secrets.HOST }}
+#         username: ${{ secrets.USERNAME }}
+#         password: ${{ secrets.PASSWORD }}
+#         script: |
+#           docker pull devco/fast-api-example:latest
+#           docker stop fast-api-example || true
+#           docker rm fast-api-example || true
+#           docker run --name fast-api-example -d -p 8000:8000 devco/fast-api-example:latest
