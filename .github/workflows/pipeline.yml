@@ -39,14 +39,15 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        SONAR_TOKEN: "c84f12a9a1db470b759cf1107822db8860cf8ea1"
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #SONAR_TOKEN: "c84f12a9a1db470b759cf1107822db8860cf8ea1"
 
 ## Build and push docker image
     - name: Login to Docker Hub
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASS }}
+        password: ${{ secrets.PASSWORD }}
     
     - name: Build and push Docker image
       if: success()
@@ -63,7 +64,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASS }}
+        password: ${{ secrets.PASSWORD }}
         script: |
           docker pull devco/fast-api-example:latest
           docker stop fast-api-example || true
