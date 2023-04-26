@@ -39,9 +39,9 @@ jobs:
       if: success()
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets_HOST }}
-        username: ${{ secrets_USERNAME }}
-        password: ${{ secrets_PASSWORD }}
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
         script: |
           docker pull devco/fast-api-example:latest
           docker stop fast-api-example || true
