@@ -39,8 +39,8 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #SONAR_TOKEN: "c84f12a9a1db470b759cf1107822db8860cf8ea1"
+        #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_TOKEN: "c84f12a9a1db470b759cf1107822db8860cf8ea1"
 
 ## Build and push docker image
     - name: Login to Docker Hub
