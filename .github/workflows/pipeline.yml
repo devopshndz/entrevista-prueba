@@ -24,8 +24,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install --no-cache-dir --upgrade -r requirements.txt
-        echo ${{ secrets.DOCKERHUB_USERNAME }}
-        echo ${{ secrets.DOCKERHUB_TOKEN }}
 
 ## Test with unittest
     - name: Test with unittest
