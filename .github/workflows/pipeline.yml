@@ -59,7 +59,7 @@ jobs:
     #     tags: devco/fast-api-example:latest
     #     #
     - name: Docker build and push
-    - uses: actions/checkout@v1
+      uses: actions/checkout@v1
       run: |
         echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "acertijo138" --password-stdin
         docker image build -t devco/fast-api-example:latest .
