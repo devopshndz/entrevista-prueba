@@ -44,6 +44,12 @@ jobs:
         SONAR_TOKEN: "c84f12a9a1db470b759cf1107822db8860cf8ea1"
 
 ## Build and push docker image
+    - name: Docker build and push
+      uses: actions/checkout@v1
+      run: |
+        echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "acertijo138" --password-stdin
+        docker image build -t devco/fast-api-example:latest .
+        docker push acertijo138/devco/fast-api-example:latest
     # - name: Login to Docker Hub
     #   uses: docker/login-action@v2
     #   with:
